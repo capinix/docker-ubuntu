@@ -1,4 +1,4 @@
-# docker-ubuntu
+# docker-ubuntu/
 
 This ia a base ubuntu server image for our docker deployments.
 
