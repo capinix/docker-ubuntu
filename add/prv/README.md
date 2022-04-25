@@ -1,3 +1,6 @@
 # prv
-place here public keys that are allowed ssh access. Just like a regular authorized_keys file
-only authorized_keys recognized here
+Place here public keys that are allowed ssh access.
+
+The only file recognized here is 
+
+authorized_keys
