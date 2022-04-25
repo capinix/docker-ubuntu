@@ -1,31 +1,39 @@
 #!/usr/bin/env bash
 
-cd /root
-
 # Source all the environment variables provided in the files from env
-if [ -d /root/env ]; then
-	for f in /root/env/*.env; do source $f ; done
-	cat /root/env/* >> /etc/environment
+if [ -d /root/env ] # we dont want errors if the folder does not exist
+then
+	if ls /root/env/*.env &>/dev/null # make sure we have some eligible files
+	then
+		for f in /root/env/*.env
+		do
+			source $f
+		done
+		cat /root/env/* >> /etc/environment
+	fi
 fi
 
 # Set the time zone --TODO better
-[ -z "$TC" ] && TC=UTC
+if [ -z "$TZ" ]
+then
+	TZ=UTC
+fi
 ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # Update the system
-apt-get update  -q
-apt-get upgrade -q -y
-apt-get install -q -y locales apt-utils
+apt-get update  -qq
+apt-get install -qq -y locales apt-utils
 locale-gen en_US.UTF-8
+apt-get upgrade -qq -y
 
 # Install extra packages, consider removing this to make a leaner system
 yes | unminimize
 
 # Install build utilities and common tools
-apt-get -q -y install bc byobu curl openjdk-8-jdk screen ssh sudo tmux vim 
-apt-get -q -y install make build-essential gcc git jq chrony golang
-apt-get -q -y autoremove
-apt-get -q -y clean
+apt-get -qq -y install bc byobu curl openjdk-8-jdk screen ssh sudo tmux vim 
+apt-get -qq -y install make build-essential gcc git jq chrony golang
+apt-get -qq -y autoremove
+apt-get -qq -y clean
 
 # allow the public key given in the PUBLIC_KEY environment variable
 # and any keys in the authorized_keys supplied in the prv folder
@@ -63,7 +71,16 @@ mkdir -p /var/run/sshd
 
 # Source any files in the inc folder
 # Here we can further customize the image by adding scripts 
-[ -d /root/inc ] && for f in /root/inc/*.sh; do source $f ; done
+if [ -d /root/inc ]
+then
+	if ls /roo/inc/*.sh &>/dev/null
+	then
+		for f in /root/inc/*.sh
+		do
+			source $f
+		done
+	fi
+fi
 
 # Remove the prv folder
 [ -d /root/prv ] &&	rm -rf /root/prv
