@@ -43,6 +43,7 @@ cat /root/prv/authorized_keys | sort -u > /root/.ssh/authorized_keys
 chmod 600 /root/.ssh/authorized_keys
 
 # Create a system user to run whatever application we want to run
+# The user name can be customized with the APP_USER environment variable
 # User only accessible via ssh and public key
 # user can sudo without a password
 [ -z "$APP_USER" ] && APP_USER=node
