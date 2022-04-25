@@ -17,4 +17,13 @@ one of these files is a good place to put required environment variables like
 
 PUBLIC_KEY=
 
-APP_USER=
+APP_USER=dev
+APP_PASS=devPassword
+
+Remember to change the password on login and disable password access through ssh
+
+A script to disable ssh password access is provided 
+
+sudo ./disable-ssh-password.sh
+
+
