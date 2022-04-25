@@ -73,7 +73,7 @@ mkdir -p /var/run/sshd
 # Here we can further customize the image by adding scripts 
 if [ -d /root/inc ]
 then
-	if ls /roo/inc/*.sh &>/dev/null
+	if ls /root/inc/*.sh &>/dev/null
 	then
 		for f in /root/inc/*.sh
 		do
