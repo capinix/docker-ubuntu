@@ -66,6 +66,16 @@ if [ -d "${DEST}" ]; then
 fi
 echo "${APP_USER}  ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
+file=disable-ssh-password.sh
+srce="/root/src/${file}"
+dest="/home/${APP_USER}/${file}"
+if [ -f "${srce}" ]
+then
+	cp "${srce}" "${dest}"
+	chown ${APP_USER}:${APP_USER} "${dest}"
+	chmod 775 "${dest}"
+fi
+
 # Create the ssh run directory
 mkdir -p /var/run/sshd
 
