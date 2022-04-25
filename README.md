@@ -13,6 +13,12 @@ an optional authorized_keys file could also be added to the config path
 a system user is created, the name if this user can be specified by setting
 the APP_USER environment variable in config/env.sh. it defaults to node
 
+To use
+docker run -d --name ubuntu -p 2222:22/tcp capinix/ubuntu
+
+
+
+
 
 useful commands do not use 
 
