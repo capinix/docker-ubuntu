@@ -13,3 +13,8 @@ public_key.env
 
 Be careful not to clobber your variables over multiple files
 
+one of these files is a good place to put required environment variables like
+
+PUBLIC_KEY=
+
+APP_USER=
