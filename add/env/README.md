@@ -1,12 +1,15 @@
 # env
-Here we set environment variables needed for the image
-a standard shell file format which will be sourced and inserted
-into the /etc/environment.
+Here we set environment variables needed for the image.
+
+The file contains standard bash variable assignments of the form
 
 VARIABLE=VALUE
 
-be careful not to clobber your variables over multiple files
-files read must have the .env extension
-other files will be ignored
-example: public_key.env
+Files must have an .env extension, else they are ignored
+
+example
+
+public_key.env
+
+Be careful not to clobber your variables over multiple files
 
