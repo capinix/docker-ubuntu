@@ -4,7 +4,7 @@ cd /root
 
 # Source all the environment variables provided in the files from env
 if [ -d /root/env ]; then
-	for f in /root/env/*; do source $f ; done
+	for f in /root/env/*.env; do source $f ; done
 	cat /root/env/* >> /etc/environment
 fi
 
@@ -63,7 +63,7 @@ mkdir -p /var/run/sshd
 
 # Source any files in the inc folder
 # Here we can further customize the image by adding scripts 
-[ -d /root/inc ] && for f in /root/inc/*; do source $f ; done
+[ -d /root/inc ] && for f in /root/inc/*.sh; do source $f ; done
 
 # Remove the prv folder
 [ -d /root/prv ] &&	rm -rf /root/prv
